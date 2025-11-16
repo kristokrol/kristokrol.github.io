@@ -1,4 +1,4 @@
-# kristokrol.github.io
+# [kristokrol.github.io](https://kristokrol.github.io)
 Personal CV Portfolio
 
 ## Технології
