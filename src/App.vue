@@ -1,32 +1,31 @@
 <template>
   <div class="page">
     <!-- HEADER -->
-    <header class="hero-strip" :style="{ backgroundImage: `url(${thiefGif})` }">
-      <div class="hero-strip-overlay"></div>
+    <header class="hero-strip">
       <div class="hero-left">
         <!-- Use the new portrait image here -->
         <img :src="portraitImage" alt="Khrystyna Orobets portrait" class="hero-photo" />
         <div class="hero-text">
           <h1>Khrystyna Orobets</h1>
           <h2>3D Character Animator</h2>
-          <div class="hero-meta">
-            Lviv, Ukraine · Open to remote work
-          </div>
-          <div class="hero-links">
-            <a href="mailto:kristokrol@gmail.com">Email</a>
-            <a href="https://linkedin.com/in/khrystyna-orobets" target="_blank">LinkedIn</a>
-            <a href="https://www.behance.net/kristokrol" target="_blank">Portfolio</a>
-            <a href="#showreel">Showreel</a>
-          </div>
+            <div class="hero-meta">
+              Lviv, Ukraine · Open to remote work
+            </div>
+            <div class="hero-links">
+              <a href="mailto:kristokrol@gmail.com">Email</a>
+              <a href="https://linkedin.com/in/khrystyna-orobets" target="_blank">LinkedIn</a>
+              <a href="https://www.behance.net/kristokrol" target="_blank">Portfolio</a>
+              <a href="#showreel">Showreel</a>
+            </div>
         </div>
       </div>
-      <div class="hero-gif-wrap">
-        <!-- Space reserved for future changes -->
-      </div>
+      <!-- <div class="hero-gif-wrap">
+        <img :src="thiefGif" alt="Character animation gif" class="hero-gif" />
+      </div> -->
     </header>
 
     <!-- SUMMARY -->
-    <section class="section summary-section">
+    <section class="section summary-section" ref="summarySection">
       <h3 class="section-title">About me</h3>
       <p class="summary-text">
         3D character animator with 3.5 years of experience creating expressive, game-ready performances for stylized and realistic characters,
@@ -35,7 +34,7 @@
     </section>
 
     <!-- EXPERIENCE – Argentics -->
-    <section class="section experience-section">
+    <section class="section experience-section" ref="experienceArgenticsSection">
       <h3 class="exp-title">Experience – Argentics</h3>
 
       <div class="experience-grid">
@@ -66,7 +65,7 @@
     </section>
 
     <!-- EXPERIENCE – OTHER PROJECTS -->
-    <section class="section experience-section">
+    <section class="section experience-section" ref="experienceOtherSection">
       <div class="experience-grid">
         <div class="experience-logos">
           <img :src="argenticsLogo" alt="Argentics logo" class="exp-logo" />
@@ -92,7 +91,7 @@
     </section>
 
     <!-- OTHER EXPERIENCE -->
-    <section class="section other-experience-section">
+    <section class="section other-experience-section" ref="otherExperienceSection">
       <h3 class="section-title">Other Experience & Skills</h3>
 
       <p><strong>2D Artist – Sweetcode</strong></p>
@@ -102,7 +101,7 @@
     </section>
     
     <!-- CORE SKILLS -->
-    <section class="section core-skills-section">
+    <section class="section core-skills-section" ref="coreSkillsSection">
       <h3 class="section-title" style="margin-top:20px;">Core Skills</h3>
       <p class="inline-list">
         <span>Autodesk Maya</span>
@@ -117,7 +116,7 @@
     </section>
 
     <!-- EDUCATION & LANGUAGES -->
-    <section class="section education-section">
+    <section class="section education-section" ref="educationSection">
       <h3 class="section-title" style="margin-top:20px;">Education & Languages</h3>
       <ul class="simple-list">
         <li>Lviv National Academy of Arts – Master of Ceramic Arts (2020–2022)</li>
@@ -128,7 +127,7 @@
     </section>
 
     <!-- SHOWREEL -->
-    <section class="section showreel-section" id="showreel">
+    <section class="section showreel-section" ref="showreelSection">
       <h3 class="section-title">Showreel</h3>
       <div class="showreel-card">
         <div class="showreel-title">Full Animation Reel</div>
@@ -137,7 +136,7 @@
         </p>
         <iframe
           class="showreel-frame"
-          src="https://www.youtube.com/embed/WNk3lURMlwM?autoplay=1&mute=1&rel=0"
+          src="https://www.youtube.com/embed/WNk3lURMlwM"
           title="Khrystyna Orobets – Animation Showreel"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
@@ -157,6 +156,47 @@ const lastFlagLogo = '/LastFlag_Color.png'
 const argenticsLogo = '/Argentics_logo.jpg'
 const thiefGif = '/Thief_Intro-600.gif'
 
+// Section refs for observer
+const summarySection = ref(null)
+const experienceArgenticsSection = ref(null)
+const experienceOtherSection = ref(null)
+const otherExperienceSection = ref(null)
+const coreSkillsSection = ref(null)
+const educationSection = ref(null)
+const showreelSection = ref(null)
+
+onMounted(() => {
+  const sections = [
+    summarySection.value,
+    experienceArgenticsSection.value,
+    experienceOtherSection.value,
+    otherExperienceSection.value,
+    coreSkillsSection.value,
+    educationSection.value,
+    showreelSection.value
+  ]
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('section-visible')
+        entry.target.classList.remove('section-hidden')
+      }
+    })
+  }, {
+    rootMargin: '0px',
+    threshold: 0.1
+  })
+
+  sections.forEach(section => {
+    if (section) {
+      section.classList.add('section-hidden')
+      observer.observe(section)
+    }
+  })
+})
+
+
 // Один масив для всього списку досвіду
 const experienceItems = [
   {
@@ -165,14 +205,14 @@ const experienceItems = [
   },
   {
     id: 'keyframe-animation',
-    type: 'accordion',
+    type: 'simple', // Changed from 'accordion'
     title: 'Keyframe animation for gameplay-ready characters across movement, combat, reactions, and interaction cycles, with a focus on readability and strong poses at gameplay distances.',
     mediaItems: [] // Місце для майбутніх GIF
   },
   {
     id: 'rigging-skinning',
-    type: 'accordion',
-    title: 'Rigging and skinning biped and quadruped models using Advanced Skeleton, including weight cleanup and deformation fixes (rigging breakdown).',
+    type: 'simple', // Changed from 'accordion'
+    title: 'Rigging and skinning biped models using Advanced Skeleton, including weight cleanup and deformation fixes (rigging breakdown).',
     mediaItems: [] // Місце для майбутніх GIF
   },
   {
@@ -207,7 +247,7 @@ const otherProjectsItems = [
   {
     id: 'rigging-skinning-other',
     type: 'accordion',
-    title: 'Skillfully rigging and skinning biped and quadripped models',
+    title: 'Skillfully rigging and skinning biped and quadruped models',
     mediaItems: [] // Місце для майбутніх GIF
   },
   {
@@ -227,12 +267,22 @@ const otherProjectsItems = [
   --font-primary: 'Helvetica Neue', Arial, sans-serif;
   --font-secondary: 'Georgia', serif;
 
-  /* Gradients */
-  --g-hero: linear-gradient(135deg, #222945 0%, #56708b 45%, #e66152 100%);
-  --g-summary: linear-gradient(135deg, #679595 0%, #95b08d 45%, #dfa07d 100%);
+  /* Palette: "Deep Amethyst" */
+  --bg-main: #1A1A1D;
+  --bg-section-primary: #3B1C32;
+  --bg-section-secondary: #242428;
+  --accent-primary: #A64D79;
+  --accent-secondary: #6A1E55;
+  --accent-contrast: #FFBF00; /* Rich Amber/Gold */
+  --text-primary: #EAEAEA;
+  --text-secondary: #B0B0B0;
+  --text-title: #FFFFFF;
+  --border-color: #4F4F5A;
+  --shadow-color: rgba(0, 0, 0, 0.6);
 
-  /* Shared */
-  --shadow-color: rgba(0, 0, 0, 0.7);
+  /* Accordion specific colors */
+  --accordion-bg-hover: rgba(166, 77, 121, 0.1);
+  --accordion-border-hover: rgba(166, 77, 121, 0.3);
 }
 
 * {
@@ -243,8 +293,8 @@ const otherProjectsItems = [
 }
 
 body {
-  background-color: #263650; /* Base background */
-  color: #f7f28a; /* Base text color */
+  background-color: var(--bg-main);
+  color: var(--text-primary);
 }
 
 .page {
@@ -258,22 +308,11 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 20px 28px;
   min-height: 180px;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-}
-
-.hero-strip-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--g-hero);
-  z-index: 1;
+  background: linear-gradient(135deg, var(--bg-main), var(--bg-section-primary));
+  border-bottom: 1px solid var(--border-color);
 }
 
 .hero-left {
@@ -289,7 +328,7 @@ body {
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #f7f28a;
+  border: 4px solid var(--accent-primary);
   box-shadow: 0 8px 24px var(--shadow-color);
 }
 
@@ -298,7 +337,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #f7f28a;
+  color: var(--accent-contrast);
 }
 
 .hero-text h2 {
@@ -306,14 +345,14 @@ body {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: #fbffff;
+  color: var(--accent-contrast);
   margin-top: 4px;
 }
 
 .hero-meta {
   margin-top: 8px;
   font-size: 0.9rem;
-  color: #f7f28a;
+  color: var(--text-secondary);
 }
 
 .hero-links {
@@ -323,86 +362,138 @@ body {
   font-size: 0.9rem;
 }
 .hero-links a {
-  color: #f7f28a;
+  color: var(--accent-contrast);
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 .hero-links a:hover {
-  color: #fbffff;
+  color: var(--text-title);
   text-decoration: underline;
+  transform: translateY(-2px);
 }
 
-/* --------------- SECTIONS --------------- */
+.hero-gif-wrap {
+  position: relative;
+  z-index: 2;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.hero-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Summary Section --- */
+.summary-section {
+  padding: 40px 28px;
+  background-color: var(--bg-main);
+}
+.summary-section .section-title {
+  text-align: left;
+  margin: 0 0 24px 0; /* Adjust margin for left alignment */
+  max-width: 100%;
+  color: var(--text-title);
+  border-bottom-color: var(--accent-secondary);
+}
+.summary-text {
+  max-width: 800px; /* Wider for better flow */
+  font-size: 1.1rem;
+  font-family: var(--font-secondary);
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
+  color: var(--text-primary);
+}
+
+
+/* --------------- ANIMATION STYLES --------------- */
+.section-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* --------------- GENERAL SECTION STYLING --------------- */
 
 .section {
   padding: 32px 28px;
 }
 
 .section-title {
+  display: block;
+  text-align: center;
   font-size: 1.2rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  margin-bottom: 20px;
+  margin: 0 auto 24px;
   padding-bottom: 8px;
   border-bottom-width: 2px;
   border-bottom-style: solid;
-  display: inline-block;
+  max-width: 80%;
+}
+
+.section p,
+.section ul {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section p {
-  margin: 0 0 12px;
+  margin-bottom: 12px;
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.7; /* Increased for readability */
   max-width: 800px;
 }
 
 ul.simple-list {
-  margin: 12px 0 0 20px;
-  padding: 0;
+  margin-top: 12px;
+  padding-left: 20px;
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.7; /* Increased for readability */
+  max-width: 800px;
 }
 ul.simple-list li {
   margin-bottom: 6px;
 }
 
 
-/* --- Summary Section --- */
-.summary-section {
-  background: var(--g-summary);
-}
-.summary-section .section-title,
-.summary-section p {
-  color: #f5f9ff;
-}
-.summary-section .section-title {
-  border-bottom-color: #b8cee6;
-}
-.summary-text {
-  max-width: 700px;
-  font-size: 1.1rem;
-  font-family: var(--font-secondary);
-}
-
-
 /* --- Experience Sections (ACCENT) --- */
 .experience-section {
-  background-color: #642226;
-  color: #d8ba94;
+  background-color: var(--bg-section-primary);
+  color: var(--text-primary);
 }
-.experience-section .exp-title,
+
+.exp-title {
+  display: block;
+  text-align: left;
+  font-size: 1.4rem; /* Increased font size */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-contrast);
+  margin: 0 0 32px 0; /* Adjust margin for left alignment */
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent-primary);
+}
+
 .experience-section .exp-role,
-.experience-section .project-title,
-.experience-section .exp-bullets {
-  color: #d8ba94;
-}
-.experience-section .exp-title {
-  border-bottom-color: #d8ba94;
+.experience-section .project-title {
+  color: var(--text-title);
 }
 .experience-section .exp-meta {
-  color: #fff9f8;
+  color: var(--text-secondary);
 }
 
 .experience-grid {
@@ -411,6 +502,9 @@ ul.simple-list li {
   gap: 20px;
   align-items: start;
   margin-bottom: 20px;
+  max-width: 100%; /* Full width within section padding */
+  margin-left: 0;
+  margin-right: auto;
 }
 
 .exp-logo {
@@ -431,97 +525,104 @@ ul.simple-list li {
 }
 
 .project-title {
-  font-size: 1.1rem;
-  margin-top: 16px;
-  margin-bottom: 12px;
+  font-size: 1.2rem;
+  margin: 24px 0 16px;
   font-weight: 700;
+  text-align: center;
+  color: var(--accent-contrast);
 }
 
 .exp-bullets {
-  margin: 0 0 0 24px;
-  padding: 0;
+  margin: 0;
+  padding-left: 24px;
   max-width: 800px;
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.05rem; /* Unified font size */
+  line-height: 1.8; /* Increased for readability */
+  text-align: left;
 }
 .exp-bullets li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
-.exp-bullets :deep(.accordion-header) { color: #d8ba94; }
-.exp-bullets :deep(.accordion-icon) { color: #d8ba94; }
+.exp-bullets :deep(.accordion-header) {
+  color: var(--text-primary);
+  font-size: 1.05rem; /* Unified font size */
+  text-align: left;
+}
+.exp-bullets :deep(.accordion-icon) {
+  color: var(--accent-contrast);
+}
 .exp-bullets :deep(.accordion-header:hover) {
-  background-color: rgba(255, 249, 248, 0.05);
-  border-color: rgba(216, 186, 148, 0.3);
+  background-color: var(--accordion-bg-hover);
+  border-color: var(--accordion-border-hover);
+  color: var(--accent-primary);
 }
 
 
-/* --- Other Experience (Light) --- */
+/* --- Other Experience --- */
 .other-experience-section {
-  background-color: #d6b896;
-  color: #664534;
-}
-.other-experience-section .section-title,
-.other-experience-section p,
-.other-experience-section ul {
-  color: #664534;
+  background-color: var(--bg-section-secondary);
 }
 .other-experience-section .section-title {
-  border-bottom-color: #69583a;
+  border-bottom-color: var(--border-color);
+  color: var(--text-title);
 }
+.other-experience-section p,
+.other-experience-section ul {
+  text-align: left;
+}
+
 
 /* --- Core Skills & Education --- */
 .core-skills-section,
 .education-section {
-  background-color: #714e3a;
-  color: #d6b896;
+  background-color: var(--bg-main);
 }
-.core-skills-section .section-title,
-.core-skills-section .inline-list span,
-.education-section .section-title,
-.education-section ul {
-  color: #d6b896;
-}
+
 .core-skills-section .section-title,
 .education-section .section-title {
-  border-bottom-color: #fffff1;
+  border-bottom-color: var(--accent-secondary);
+  color: var(--text-title);
 }
+
 .inline-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center; /* Center the skill tags */
   gap: 12px;
-  margin-top: 12px;
+  margin: 12px auto 0;
+  max-width: 800px;
 }
 .inline-list span {
-  background-color: rgba(0,0,0,0.1);
+  background-color: var(--accent-secondary);
+  color: var(--text-title);
   padding: 6px 12px;
   border-radius: 16px;
   font-size: 0.9rem;
-  border: 1px solid rgba(255,255,241, 0.2);
 }
 
 /* --- Showreel Section --- */
 .showreel-section {
-  background-color: #263650;
-  color: #f7f28a;
+  background-color: var(--bg-section-secondary);
 }
 .showreel-section .section-title {
-  color: #f7f28a;
-  border-bottom-color: #fbffff;
+  color: var(--text-title);
+  border-bottom-color: var(--border-color);
 }
 .showreel-section .showreel-card p {
-  color: #f7f28a;
+  color: var(--text-secondary);
 }
 .showreel-section .showreel-title {
-  color: #fbffff;
+  color: var(--text-title);
 }
 
 .showreel-card {
   max-width: 800px;
   border-radius: 12px;
   padding: 24px;
-  background-color: #222945;
-  border: 1px solid #56708b;
+  background: linear-gradient(135deg, var(--accent-secondary), var(--bg-section-primary));
+  border: 1px solid var(--border-color);
   box-shadow: 0 16px 40px var(--shadow-color);
+  margin: 0 auto;
 }
 
 .showreel-title {
@@ -551,6 +652,7 @@ ul.simple-list li {
   }
   .hero-photo { width: 120px; height: 120px; }
   .hero-links { justify-content: center; }
+  .hero-gif-wrap { display: none; } /* Hide on mobile to save space */
   .experience-grid { grid-template-columns: 1fr; gap: 12px; }
   .exp-logo { margin: 0 auto; }
   .experience-header-text { text-align: center; }
