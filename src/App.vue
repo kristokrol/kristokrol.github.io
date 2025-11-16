@@ -127,7 +127,7 @@
     </section>
 
     <!-- SHOWREEL -->
-    <section class="section showreel-section" ref="showreelSection">
+    <section id="showreel" class="section showreel-section" ref="showreelSection">
       <h3 class="section-title">Showreel</h3>
       <div class="showreel-card">
         <div class="showreel-title">Full Animation Reel</div>
