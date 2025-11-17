@@ -36,6 +36,25 @@
 </head>
 <body>
   <div id="app"></div>
+  <button id="save-pdf" style="
+    display: block; 
+    margin: 40px auto; 
+    padding: 12px 24px; 
+    font-size: 1rem; 
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    background-color: var(--accent-secondary, #6A1E55);
+    color: var(--text-title, #FFFFFF);
+    border: 2px solid var(--accent-primary, #A64D79);
+    border-radius: 8px;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.3s;
+  "
+  onmouseover="this.style.backgroundColor='var(--accent-primary, #A64D79)'; this.style.transform='translateY(-2px)';"
+  onmouseout="this.style.backgroundColor='var(--accent-secondary, #6A1E55)'; this.style.transform='translateY(0)';"
+  >Save as PDF</button>
   <script type="module" src="/src/main.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
