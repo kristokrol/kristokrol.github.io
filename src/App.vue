@@ -15,7 +15,9 @@
               <a href="mailto:kristokrol@gmail.com">Email</a>
               <a href="https://linkedin.com/in/khrystyna-orobets" target="_blank">LinkedIn</a>
               <a href="https://www.behance.net/kristokrol" target="_blank">Portfolio</a>
+              <a href="https://kristokrol.github.io/" target="_blank">Website</a>
               <a href="#showreel">Showreel</a>
+              <a href="#" id="save-pdf">CV</a>
             </div>
         </div>
       </div>
@@ -49,7 +51,7 @@
         </div>
       </div>
 
-      <h4 class="project-title">Selected Project – Last Flag</h4>
+      <h4 class="project-title">Selected Project – <a href="https://youtu.be/K72rsqTfzTo" target="_blank" rel="noopener noreferrer">Last Flag</a></h4>
 
       <ul class="exp-bullets">
         <template v-for="(item, index) in experienceItems" :key="index">
