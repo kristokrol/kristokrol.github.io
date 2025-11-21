@@ -130,7 +130,9 @@
 
     <!-- SHOWREEL -->
     <section id="showreel" class="section showreel-section" ref="showreelSection">
-      <h3 class="section-title">Showreel</h3>
+      <h3 class="section-title">
+        <a href="https://www.youtube.com/watch?v=WNk3lURMlwM" target="_blank" rel="noopener noreferrer">Showreel</a>
+      </h3>
       <div class="showreel-card">
         <div class="showreel-title">Full Animation Reel</div>
         <p>
@@ -196,6 +198,21 @@ onMounted(() => {
       observer.observe(section)
     }
   })
+
+  // CV download logic
+  const saveButton = document.getElementById('save-pdf');
+  if (saveButton) {
+      saveButton.addEventListener('click', (e) => {
+          e.preventDefault(); // Prevent the link from navigating
+          const pdfUrl = '/CV_Khrystyna_Orobets.pdf';
+          const a = document.createElement('a');
+          a.href = pdfUrl;
+          a.download = 'CV_Khrystyna_Orobets.pdf';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+      });
+  }
 })
 
 
@@ -444,6 +461,11 @@ body {
   border-bottom-width: 2px;
   border-bottom-style: solid;
   max-width: 80%;
+}
+
+.section-title a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .section p,
