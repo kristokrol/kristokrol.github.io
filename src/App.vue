@@ -204,7 +204,7 @@ onMounted(() => {
   if (saveButton) {
       saveButton.addEventListener('click', (e) => {
           e.preventDefault(); // Prevent the link from navigating
-          const pdfUrl = '/CV_Khrystyna_Orobets.pdf';
+          const pdfUrl = 'CV_Khrystyna_Orobets.pdf';
           const a = document.createElement('a');
           a.href = pdfUrl;
           a.download = 'CV_Khrystyna_Orobets.pdf';
