@@ -131,16 +131,16 @@
     <!-- SHOWREEL -->
     <section id="showreel" class="section showreel-section" ref="showreelSection">
       <h3 class="section-title">
-        <a href="https://www.youtube.com/watch?v=WNk3lURMlwM" target="_blank" rel="noopener noreferrer">Showreel</a>
+        <a href="https://vimeo.com/510457264?share=copy&fl=sv&fe=ci" target="_blank" rel="noopener noreferrer">Showreel</a>
       </h3>
       <div class="showreel-card">
         <div class="showreel-title">Full Animation Reel</div>
         <p>
-          Embedded reel with gameplay and cinematic work across Last Flag and other projects.
+          Latest embedded reel with gameplay and cinematic work
         </p>
         <iframe
           class="showreel-frame"
-          src="https://www.youtube.com/embed/WNk3lURMlwM"
+          src="https://player.vimeo.com/video/510457264"
           title="Khrystyna Orobets – Animation Showreel"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
