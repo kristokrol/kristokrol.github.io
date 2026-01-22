@@ -51,7 +51,7 @@
         </div>
       </div>
 
-      <h4 class="project-title">Selected Project – <a href="https://youtu.be/K72rsqTfzTo" target="_blank" rel="noopener noreferrer">Last Flag</a></h4>
+      <h4 class="project-title">Selected Project – <a href="https://lastflag.com/" target="_blank" rel="noopener noreferrer">Last Flag</a></h4>
 
       <ul class="exp-bullets">
         <template v-for="(item, index) in experienceItems" :key="index">
