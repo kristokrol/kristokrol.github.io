@@ -9,7 +9,7 @@
           <h1>Khrystyna Orobets</h1>
           <h2>3D Character Animator</h2>
             <div class="hero-meta">
-              Lviv, Ukraine · Open to remote work
+              Lviv, Ukraine · <a href="tel:+380680220734">+380680220734</a> · Open to remote work
             </div>
             <div class="hero-links">
               <a href="mailto:kristokrol@gmail.com">Email</a>
@@ -372,6 +372,13 @@ body {
   margin-top: 8px;
   font-size: 0.9rem;
   color: var(--text-secondary);
+}
+.hero-meta a {
+  color: inherit;
+  text-decoration: none;
+}
+.hero-meta a:hover {
+  text-decoration: underline;
 }
 
 .hero-links {
