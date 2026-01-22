@@ -135,9 +135,9 @@
       </h3>
       <div class="showreel-card">
         <div class="showreel-title">Full Animation Reel</div>
-        <p>
-          Latest embedded reel with gameplay and cinematic work
-        </p>
+          <a href="https://youtu.be/OTG3NWsc48o?si=GMFUmXfxK-Mhdbh1" target="_blank" rel="noopener noreferrer" class="reel-button">
+            Latest embedded reel with gameplay and cinematic work
+          </a>
         <iframe
           class="showreel-frame"
           src="https://www.youtube.com/embed/OTG3NWsc48o"
@@ -664,6 +664,33 @@ ul.simple-list li {
   border: none;
   border-radius: 10px;
   margin-top: 12px;
+}
+
+.reel-button {
+  display: inline-block;
+  background-color: var(--accent-primary);
+  color: var(--text-title);
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 10px;
+  border: none;
+  border-bottom: 3px solid var(--accent-secondary);
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reel-button:hover {
+  background-color: var(--accent-secondary);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 8px var(--shadow-color);
+  text-decoration: none;
+}
+
+.reel-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 @media (max-width: 800px) {
