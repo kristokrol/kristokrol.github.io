@@ -135,9 +135,9 @@
       </h3>
       <div class="showreel-card">
         <div class="showreel-title">Full Animation Reel</div>
-          <a href="https://youtu.be/OTG3NWsc48o?si=GMFUmXfxK-Mhdbh1" target="_blank" rel="noopener noreferrer" class="reel-button">
-            Latest embedded reel with gameplay and cinematic work
-          </a>
+           <a href="https://youtu.be/OTG3NWsc48o?si=GMFUmXfxK-Mhdbh1" target="_blank" rel="noopener noreferrer" class="reel-button">
+             Direct showreel link
+           </a>
         <iframe
           class="showreel-frame"
           src="https://www.youtube.com/embed/OTG3NWsc48o"
