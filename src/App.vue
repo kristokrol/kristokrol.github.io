@@ -14,7 +14,6 @@
             <div class="hero-links">
               <a href="mailto:kristokrol@gmail.com">Email</a>
               <a href="https://linkedin.com/in/khrystyna-orobets" target="_blank">LinkedIn</a>
-              <a href="https://www.behance.net/kristokrol" target="_blank">Portfolio</a>
               <a href="https://kristokrol.github.io/" target="_blank">Website</a>
               <a href="https://youtu.be/OTG3NWsc48o?si=GMFUmXfxK-Mhdbh1" target="_blank">Showreel</a>
               <a href="#" id="save-pdf">CV</a>
