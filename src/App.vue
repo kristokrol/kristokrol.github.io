@@ -16,7 +16,7 @@
               <a href="https://linkedin.com/in/khrystyna-orobets" target="_blank">LinkedIn</a>
               <a href="https://www.behance.net/kristokrol" target="_blank">Portfolio</a>
               <a href="https://kristokrol.github.io/" target="_blank">Website</a>
-              <a href="#showreel">Showreel</a>
+              <a href="https://youtu.be/OTG3NWsc48o?si=GMFUmXfxK-Mhdbh1" target="_blank">Showreel</a>
               <a href="#" id="save-pdf">CV</a>
             </div>
         </div>
@@ -131,7 +131,7 @@
     <!-- SHOWREEL -->
     <section id="showreel" class="section showreel-section" ref="showreelSection">
       <h3 class="section-title">
-        <a href="https://vimeo.com/510457264?share=copy&fl=sv&fe=ci" target="_blank" rel="noopener noreferrer">Showreel</a>
+        <a href="https://youtu.be/OTG3NWsc48o?si=GMFUmXfxK-Mhdbh1" target="_blank" rel="noopener noreferrer">Showreel</a>
       </h3>
       <div class="showreel-card">
         <div class="showreel-title">Full Animation Reel</div>
@@ -140,7 +140,7 @@
         </p>
         <iframe
           class="showreel-frame"
-          src="https://player.vimeo.com/video/510457264"
+          src="https://www.youtube.com/embed/OTG3NWsc48o"
           title="Khrystyna Orobets – Animation Showreel"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
